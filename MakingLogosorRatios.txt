@@ -1,0 +1,4 @@
+To make a logo or new ratio file
+Edit text in xml file.  Save file
+Open text file in a browser and save the svg output.
+Open svg file in Inkskape.  Select the text, go to Path, object to path.  Save as a dxf file.
