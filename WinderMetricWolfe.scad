@@ -23,7 +23,7 @@ IN_TO_MM = 25.4;
 $fn = 48;
 
 //Set the build as either 10:1 or 15:1 (actually 15.1:1)
-isFifteen = 1; //0=10:1; 1=15:1
+isFifteen = 0; //0=10:1; 1=15:1
 //set to larger size, Large size uses 300 circular pitch and smaller size uses 225 circular pitch for gears
 isLarge = 0; //recommend use smaller size for 15:1
 
@@ -282,7 +282,10 @@ module case_top_stl() {
             #translate([0, 0, 5]) {
                 translate(screw1_pos) rotate([180, 0, 0]) machine_screw(21, tol=tolerance);
                 translate(screw2_pos) rotate([180, 0, 0]) machine_screw(21, tol=tolerance);
-                translate(screw3_pos) rotate([180, 0, 0]) machine_screw(21, tol=tolerance);
+				if(isFifteen||isLarge)
+				{
+					translate(screw3_pos) rotate([180, 0, 0]) machine_screw(21, tol=tolerance);
+				}
             }    
         }
     }
@@ -319,10 +322,13 @@ module case_bottom_stl() {
                     #rotate([0, 0, -4.25]) hex_nut(tol = .1, solid=true);
                     translate([0, 0, 25]) rotate([180, 0, 0]) machine_screw(25);
                 }
-                translate(screw3_pos) {
-                    #hex_nut(tol = .1, solid=true);
-                    translate([0, 0, 25]) rotate([180, 0, 0]) machine_screw(25);
-                }
+				if(isFifteen||isLarge)
+				{
+					translate(screw3_pos) {
+						#hex_nut(tol = .1, solid=true);
+						translate([0, 0, 25]) rotate([180, 0, 0]) machine_screw(25);
+					}
+				}
             }
         }
     }
@@ -350,7 +356,10 @@ module case_label_stl()
 module case_spacers () {
     translate(screw1_pos) spacer_tube_stl();
     translate(screw2_pos) spacer_tube_stl();
-    translate(screw3_pos) spacer_tube_stl();
+	if(isFifteen||isLarge)
+	{
+		translate(screw3_pos) spacer_tube_stl();
+	}
 }
 
 
