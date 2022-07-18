@@ -23,7 +23,7 @@ IN_TO_MM = 25.4;
 $fn = 48;
 
 //Set the build as either 10:1 or 15:1 (actually 15.1:1)
-isFifteen = 0; //0=10:1; 1=15:1
+isFifteen = 1; //0=10:1; 1=15:1
 //set to larger size, Large size uses 300 circular pitch and smaller size uses 225 circular pitch for gears
 isLarge = 0; //recommend use smaller size for 15:1
 
